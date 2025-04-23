@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kaukabapay | Login</title>
+  <title>Kaukabapay | Sign In</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,17 +30,17 @@
   <main>
     <div class="container">
 
-      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <section class="section min-vh-100 d-flex flex-column align-items-center justify-content-center">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
-              <div class="card mb-3 p-3">
+            <div class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <div class="card px-3">
 
                 <div class="card-body">
 
                   <div class="d-flex justify-content-center py-4">
-                    <a href="index.html" class="logo d-flex align-items-center w-auto">
-                    <img src="assets/img/kaukabapay.png" alt="">
+                    <a href="<?= base_url('app/login') ?>" class="logo d-flex align-items-center w-auto">
+                    <img src="<?= base_url() ?>assets/img/kaukabapay.png" alt="" width="150px">
                     </a>
                   </div>
 
@@ -48,18 +48,18 @@
                     <div class="alert alert-danger"><?= $this->session->flashdata('error') ?></div>
                   <?php endif; ?>
 
-                  <form action="<?= base_url('app/login') ?>" method="post" class="row g-3">
+                  <form action="<?= base_url('app/authenticate') ?>" method="post" class="row g-3">
 
                     <div class="col-12">
                     <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email</label>
+                    <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com">
+                    <label for="floatingEmail">Email</label>
                     </div>
                     </div>
 
                     <div class="col-12">
                     <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                     </div>
                       <div class="invalid-feedback">Please enter your password!</div>
@@ -72,7 +72,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-success w-100" type="submit">Login</button>
+                      <button class="btn btn-success w-100" type="submit">Sign In</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Lupa Password? <a href="pages-register.html">Klik Disini</a></p>
