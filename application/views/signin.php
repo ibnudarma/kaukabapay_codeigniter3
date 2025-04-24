@@ -9,12 +9,23 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"
+    integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+"
+    crossorigin="anonymous"></script>
+
   <!-- Favicons -->
   <link href="assets/img/logo.png" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +51,7 @@
 
                   <div class="d-flex justify-content-center py-4">
                     <a href="<?= base_url('app/login') ?>" class="logo d-flex align-items-center w-auto">
-                    <img src="<?= base_url() ?>assets/img/kaukabapay.png" alt="" width="150px">
+                      <img src="<?= base_url() ?>assets/img/kaukabapay.png" alt="" width="150px">
                     </a>
                   </div>
 
@@ -51,17 +62,19 @@
                   <form action="<?= base_url('app/authenticate') ?>" method="post" class="row g-3">
 
                     <div class="col-12">
-                    <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com">
-                    <label for="floatingEmail">Email</label>
-                    </div>
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingEmail" name="email"
+                          placeholder="name@example.com">
+                        <label for="floatingEmail">Email</label>
+                      </div>
                     </div>
 
                     <div class="col-12">
-                    <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                    </div>
+                      <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" name="password"
+                          placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                      </div>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
@@ -91,7 +104,8 @@
     </div>
   </main><!-- End #main -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
