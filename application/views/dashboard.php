@@ -1,153 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="pagetitle">
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<section class="section dashboard">
+  <div class="row">
 
-  <title>Kaukabapay | Dashboard</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="<?= base_url() ?>assets/img/favicon.png" rel="icon">
-  <link href="<?= base_url() ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url() ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url() ?>assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?= base_url() ?>assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="<?= base_url() ?>assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="<?= base_url() ?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="<?= base_url() ?>assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="<?= base_url() ?>assets/img/kaukabapay.png" alt="">
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="<?= base_url() ?>assets/img/user.png" alt="Profile" class="rounded-circle">
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
-
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link <?= current_url() == base_url('app/dashboard') ? '' : 'collapsed' ?>" href="<?= base_url('app/dashboard') ?>">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
-
-      <li class="nav-heading">More menu</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= base_url() ?>">
-          <i class="bi bi-question-circle"></i>
-          <span>Bantuan</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= base_url() ?>">
-        <i class="bi bi-box-arrow-right"></i>
-          <span>Sign Out</span>
-        </a>
-      </li>
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
-
-  <main id="main" class="main">
-
-    <section class="section">
+    <div class="col-lg-12">
       <div class="row">
-        <div class="card">
-          <p class="card-title px-3">Dasboard</p>
-          <div class="card-body px-3">
-            <h6>Selamat Datang, User yang login</h6>
+
+        <div class="col-xxl-4 col-md-4">
+          <div class="card info-card siswa-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Total Siswa</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-people"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>145</h6>
+
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div>
+        </div><!-- End Sales Card -->
+
+        <!-- Revenue Card -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card info-card tagihan-unpaid-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Tagihan Belum Dibayar</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-file-earmark"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>24</h6>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Revenue Card -->
+
+        <!-- Revenue Card -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card info-card tagihan-paid-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Tagihan Sudah Dibayar</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-file-earmark-check"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>10</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Revenue Card -->
+
+        <!-- Customers Card -->
+        <div class="col-xxl-4 col-xl-6">
+
+          <div class="card info-card revenue-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Total Pemasukan</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-wallet2"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>IDR 12.440.000</h6>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- End Customers Card -->
+
+        <!-- Customers Card -->
+        <div class="col-xxl-4 col-xl-6">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Total Pengeluaran</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-wallet2"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>IDR 6.340.000</h6>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- End Customers Card -->
+
       </div>
-    </section>
+    </div><!-- End Left side columns -->
 
-  </main>
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="<?= base_url() ?>assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/echarts/echarts.min.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/quill/quill.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="<?= base_url() ?>assets/js/main.js"></script>
-
-</body>
-
-</html>
+  </div>
+</section>

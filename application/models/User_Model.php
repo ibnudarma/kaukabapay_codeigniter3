@@ -1,21 +1,11 @@
 <?php
-class User_Model extends CI_Model {
+class User_model extends CI_Model {
 
-    public function login($username, $password)
-    {
-        $this->db->where('username', $username);
-        $query = $this->db->get('users');
+    public function authCheck($email, $password){
+        $query = "SELECT * FROM users WHERE email = ? AND password = ?";
+        $result = $this->db->query($query, array($email, $password));
+        return $result->row();
+    }    
 
-        if ($query->num_rows() == 1) {
-            $user = $query->row();
-
-            if (password_verify($password, $user->password)) {
-                return $user;
-            }
-        }
-
-        return false;
-    }
-
-    
 }
+

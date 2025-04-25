@@ -5,44 +5,79 @@ class App extends CI_Controller
 {
     public function __construct() {
         parent::__construct();
-        $this->load->model('User_Model');
+        $this->load->model('User_model');
+        $this->load->model('Pegawai_model');
+        $this->load->model('Siswa_model');
         $this->load->library(['session', 'form_validation']);
         $this->load->helper('url');
+        $this->load->helper('auth');
+    }
+
+    public function test_db() {
+        $this->load->database(); // Memastikan koneksi ke database
+        if ($this->db->conn_id) {
+            echo "Koneksi berhasil!";
+        } else {
+            echo "Koneksi gagal!";
+        }
     }
 
     public function signin()
     {
+        
         $this->load->view('signin');
     }
 
     public function authenticate() {
-        $this->form_validation->set_rules('email', 'email', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
-
+        $this->form_validation->set_error_delimiters('', '');
+   
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('signin');
+                $this->load->view('signin');
         } else {
-            $email = $this->input->post('email', TRUE);
-            $password = $this->input->post('password', TRUE);
+            $email = $this->input->post('email');
+            $password = $this->input->post('password');
 
-            $user = $this->Auth_model->get_user($email);
-
-            if ($user && password_verify($password, $user->password)) {
+            $user = $this->User_model->authCheck($email,$password);
+            if($user->role == "bendahara" || $user->role == "kepala sekolah"){
+                $pegawai = $this->Pegawai_model->authPegawai($user->id_user);
                 $this->session->set_userdata([
-                    'user_id' => $user->id,
-                    'email' => $user->email,
-                    'logged_in' => TRUE
+                    'user' => $user,
+                    'pegawai' => $pegawai,
+                    'sign_in' => TRUE
                 ]);
-                redirect('dashboard');
-            } else {
-                $this->session->set_flashdata('error', 'email atau password salah!');
-                redirect('auth');
+
+                var_dump($this->session->userdata());
+
+                redirect('app/dashboard');
+            }elseif ($user->role == "siswa"){
+                $siswa = $this->Siswa_model->authSiswa($user->id_user);
+                $this->session->set_userdata([
+                    'user' => $user,
+                    'siswa' => $siswa,
+                    'sign_in' => TRUE
+                ]);
+
+                // var_dump($this->session->userdata());
+
+                redirect('app/dashboard');
             }
         }
     }
 
+    public function signout()
+    {
+        $this->session->sess_destroy();
+
+        redirect('app/signin');
+    }
+
     public function dashboard()
     {
-        $this->load->view('dashboard');
+        auth_check();
+        // var_dump($data);
+        $data['content'] = "dashboard";
+        $this->load->view('template', $data);
     }
 }

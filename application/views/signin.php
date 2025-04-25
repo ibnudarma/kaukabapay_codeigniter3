@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/logo.png" rel="icon">
+  <link href="<?= base_url() ?>assets/img/logo.png" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -52,30 +52,31 @@
 
                     <div class="col-12">
                     <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com">
+                    <input type="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" id="floatingEmail" name="email" placeholder="name@example.com">
                     <label for="floatingEmail">Email</label>
+                    <div class="invalid-feedback">
+                        <?= form_error('email') ?>
+                    </div>
                     </div>
                     </div>
 
                     <div class="col-12">
                     <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                    <input type="password" class="form-control <?= form_error('password') ? 'is-invalid' : '' ?>" id="floatingPassword" name="password" placeholder="Password">
                     <label for="floatingPassword">Password</label>
+                    <div class="invalid-feedback">
+                        <?= form_error('password') ?>
+                    </div>
                     </div>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
                     <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="lihatPassword">
-                        <label class="form-check-label" for="lihatPassword">Lihat Password</label>
-                      </div>
+                      <p class="small mb-0">Lupa Password? <a href="pages-register.html">Klik Disini</a></p>
                     </div>
+
                     <div class="col-12">
                       <button class="btn btn-success w-100" type="submit">Sign In</button>
-                    </div>
-                    <div class="col-12">
-                      <p class="small mb-0">Lupa Password? <a href="pages-register.html">Klik Disini</a></p>
                     </div>
                   </form>
 
@@ -96,6 +97,7 @@
   <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script src="<?= base_url() ?>assets/js/main.js"></script>
+
 
 </body>
 
