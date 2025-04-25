@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 22, 2025 at 08:26 PM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Waktu pembuatan: 25 Apr 2025 pada 22.18
+-- Versi server: 8.0.30
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawai`
+-- Struktur dari tabel `pegawai`
 --
 
 CREATE TABLE `pegawai` (
@@ -35,7 +35,7 @@ CREATE TABLE `pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `pegawai`
+-- Dumping data untuk tabel `pegawai`
 --
 
 INSERT INTO `pegawai` (`nip`, `nama`, `jabatan`, `user_id`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `pegawai` (`nip`, `nama`, `jabatan`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Struktur dari tabel `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -59,7 +59,7 @@ CREATE TABLE `pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengeluaran`
+-- Struktur dari tabel `pengeluaran`
 --
 
 CREATE TABLE `pengeluaran` (
@@ -72,7 +72,7 @@ CREATE TABLE `pengeluaran` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswa`
+-- Struktur dari tabel `siswa`
 --
 
 CREATE TABLE `siswa` (
@@ -90,7 +90,7 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
 INSERT INTO `siswa` (`nis`, `user_id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `nama_orang_tua`, `kontak_orang_tua`, `pekerjaan_orang_tua`, `foto`) VALUES
@@ -101,22 +101,45 @@ INSERT INTO `siswa` (`nis`, `user_id`, `nama`, `tempat_lahir`, `tanggal_lahir`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tagihan`
+-- Struktur dari tabel `tagihan`
 --
 
 CREATE TABLE `tagihan` (
   `id_tagihan` char(36) NOT NULL DEFAULT (uuid()),
   `nis` varchar(20) NOT NULL,
+  `jenis_tagihan` varchar(255) NOT NULL,
   `jumlah` int NOT NULL,
   `dibayar` int NOT NULL DEFAULT '0',
   `sisa_tagihan` int GENERATED ALWAYS AS ((`jumlah` - `dibayar`)) STORED,
-  `status` varchar(15) GENERATED ALWAYS AS ((case when ((`jumlah` - `dibayar`) <= 0) then _utf8mb4'lunas' else _utf8mb4'belum lunas' end)) STORED
+  `status` varchar(15) GENERATED ALWAYS AS ((case when ((`jumlah` - `dibayar`) <= 0) then _utf8mb4'lunas' else _utf8mb4'belum lunas' end)) STORED,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `tagihan`
+--
+
+INSERT INTO `tagihan` (`id_tagihan`, `nis`, `jenis_tagihan`, `jumlah`, `dibayar`, `created_at`) VALUES
+('ba8a6f53-2218-11f0-b717-3822e22e3cc1', 'NIS001', 'SPP Bulan Februari 2025', 250000, 0, '2025-04-26 04:03:25'),
+('ba8a76e7-2218-11f0-b717-3822e22e3cc1', 'NIS003', 'SPP Bulan Februari 2025', 250000, 0, '2025-04-26 04:03:25'),
+('ba8a79ef-2218-11f0-b717-3822e22e3cc1', 'NIS002', 'SPP Bulan Februari 2025', 250000, 0, '2025-04-26 04:03:25'),
+('c11b05f7-2218-11f0-b717-3822e22e3cc1', 'NIS001', 'SPP Bulan Maret 2025', 250000, 0, '2025-04-26 04:03:36'),
+('c11b103f-2218-11f0-b717-3822e22e3cc1', 'NIS003', 'SPP Bulan Maret 2025', 250000, 0, '2025-04-26 04:03:36'),
+('c11b1423-2218-11f0-b717-3822e22e3cc1', 'NIS002', 'SPP Bulan Maret 2025', 250000, 0, '2025-04-26 04:03:36'),
+('c6f18783-2218-11f0-b717-3822e22e3cc1', 'NIS001', 'SPP Bulan April 2025', 250000, 0, '2025-04-26 04:03:46'),
+('c6f18e52-2218-11f0-b717-3822e22e3cc1', 'NIS003', 'SPP Bulan April 2025', 250000, 0, '2025-04-26 04:03:46'),
+('c6f1915d-2218-11f0-b717-3822e22e3cc1', 'NIS002', 'SPP Bulan April 2025', 250000, 0, '2025-04-26 04:03:46'),
+('ccb21394-2218-11f0-b717-3822e22e3cc1', 'NIS001', 'SPP Bulan Mei 2025', 250000, 0, '2025-04-26 04:03:55'),
+('ccb21b9e-2218-11f0-b717-3822e22e3cc1', 'NIS003', 'SPP Bulan Mei 2025', 250000, 0, '2025-04-26 04:03:55'),
+('ccb21d64-2218-11f0-b717-3822e22e3cc1', 'NIS002', 'SPP Bulan Mei 2025', 250000, 0, '2025-04-26 04:03:55'),
+('f516c76f-2214-11f0-b717-3822e22e3cc1', 'NIS001', 'SPP Bulan Januari 2025', 250000, 0, '2025-04-26 03:44:00'),
+('f5172e01-2214-11f0-b717-3822e22e3cc1', 'NIS003', 'SPP Bulan Januari 2025', 250000, 0, '2025-04-26 03:44:00'),
+('f5173236-2214-11f0-b717-3822e22e3cc1', 'NIS002', 'SPP Bulan Januari 2025', 250000, 0, '2025-04-26 03:44:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -127,7 +150,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id_user`, `email`, `password`, `role`) VALUES
@@ -142,70 +165,70 @@ INSERT INTO `users` (`id_user`, `email`, `password`, `role`) VALUES
 --
 
 --
--- Indexes for table `pegawai`
+-- Indeks untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`nip`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `pembayaran`
+-- Indeks untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`),
   ADD KEY `tagihan_id` (`tagihan_id`);
 
 --
--- Indexes for table `pengeluaran`
+-- Indeks untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`id_pengeluaran`);
 
 --
--- Indexes for table `siswa`
+-- Indeks untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`nis`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `tagihan`
+-- Indeks untuk tabel `tagihan`
 --
 ALTER TABLE `tagihan`
   ADD PRIMARY KEY (`id_tagihan`),
   ADD KEY `nis` (`nis`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `pegawai`
+-- Ketidakleluasaan untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`);
 
 --
--- Constraints for table `pembayaran`
+-- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`tagihan_id`) REFERENCES `tagihan` (`id_tagihan`);
 
 --
--- Constraints for table `siswa`
+-- Ketidakleluasaan untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tagihan`
+-- Ketidakleluasaan untuk tabel `tagihan`
 --
 ALTER TABLE `tagihan`
   ADD CONSTRAINT `tagihan_ibfk_1` FOREIGN KEY (`nis`) REFERENCES `siswa` (`nis`) ON DELETE CASCADE ON UPDATE CASCADE;
