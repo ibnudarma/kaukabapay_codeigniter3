@@ -76,7 +76,7 @@
         <!-- Customers Card -->
         <div class="col-xxl-4 col-xl-6">
 
-          <div class="card info-card revenue-card">
+          <div class="card info-card pemasukan-card">
 
             <div class="card-body">
               <h5 class="card-title">Total Pemasukan</h5>
@@ -99,7 +99,7 @@
         <!-- Customers Card -->
         <div class="col-xxl-4 col-xl-6">
 
-          <div class="card info-card customers-card">
+          <div class="card info-card pengeluaran-card">
 
             <div class="card-body">
               <h5 class="card-title">Total Pengeluaran</h5>
@@ -117,10 +117,10 @@
             </div>
           </div>
 
-        </div><!-- End Customers Card -->
+        </div>
 
       </div>
-    </div><!-- End Left side columns -->
+    </div>
 
   </div>
 </section>

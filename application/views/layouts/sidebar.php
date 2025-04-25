@@ -10,9 +10,23 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link <?= current_url() == base_url('app/tagihan') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan') ?>">
+    <a class="nav-link <?= current_url() == base_url('tagihan/tambah') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/tambah') ?>">
+    <i class="bi bi-file-earmark-plus"></i>
+      <span>Tambah Tagihan</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link <?= current_url() == base_url('tagihan') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan') ?>">
     <i class="bi bi-receipt"></i>
-      <span>Tagihan</span>
+      <span>Kelola Tagihan</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link <?= current_url() == base_url('account') ? '' : 'collapsed' ?>" href="<?= base_url('account') ?>">
+    <i class="bi bi-people-fill"></i>
+      <span>Kelola Akun</span>
     </a>
   </li>
 

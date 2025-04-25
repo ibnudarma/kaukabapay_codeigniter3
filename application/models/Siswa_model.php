@@ -1,4 +1,5 @@
 <?php
+
 class Siswa_model extends CI_Model {
     public function authSiswa($user_id){
         $query = "SELECT * FROM siswa WHERE user_id = ?";

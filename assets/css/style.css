@@ -821,13 +821,13 @@ h6 {
 }
 
 .dashboard .siswa-card .card-icon {
-  color: #4154f1;
-  background: #f6f6fe;
+  color: #417cf1;
+  background: #f6f7fe;
 }
 
 .dashboard .tagihan-unpaid-card .card-icon {
-  color: #2eca6a;
-  background: #e0f8e9;
+  color: #c2ca2e;
+  background: #f7f8e0;
 }
 
 .dashboard .tagihan-paid-card .card-icon {
@@ -835,9 +835,14 @@ h6 {
   background: #e0f8e9;
 }
 
-.dashboard .customers-card .card-icon {
-  color: #ff771d;
-  background: #ffecdf;
+.dashboard .pemasukan-card .card-icon {
+  color: #1dff87;
+  background: #dfffe6;
+}
+
+.dashboard .pengeluaran-card .card-icon {
+  color: #ff1d1d;
+  background: #ffdfdf;
 }
 
 /* Activity */
