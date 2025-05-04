@@ -9,6 +9,7 @@
     </a>
   </li>
 
+  <?php if ($this->session->userdata('user')->role == 'bendahara') :?>
   <li class="nav-item">
     <a class="nav-link <?= current_url() == base_url('tagihan/tambah') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/tambah') ?>">
     <i class="bi bi-file-earmark-plus"></i>
@@ -29,7 +30,7 @@
       <span>Kelola Akun</span>
     </a>
   </li>
-
+  <?php endif ?>
   <li class="nav-heading">More menu</li>
 
   <li class="nav-item">

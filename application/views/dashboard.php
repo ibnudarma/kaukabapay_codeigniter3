@@ -4,7 +4,7 @@
       <li class="breadcrumb-item active">Dashboard</li>
     </ol>
   </nav>
-</div><!-- End Page Title -->
+</div>
 
 <section class="section dashboard">
   <div class="row">
@@ -23,57 +23,54 @@
                 <i class="bi bi-people"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>145</h6>
+                  <h6><?= $jumlah_siswa ?></h6>
 
                 </div>
               </div>
             </div>
 
           </div>
-        </div><!-- End Sales Card -->
+        </div>
 
-        <!-- Revenue Card -->
         <div class="col-xxl-4 col-md-4">
           <div class="card info-card tagihan-unpaid-card">
 
             <div class="card-body">
-              <h5 class="card-title">Tagihan Belum Dibayar</h5>
+              <h5 class="card-title">Tagihan Belum Lunas</h5>
 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i class="bi bi-file-earmark"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>24</h6>
+                  <h6><?= $tagihan_belum_lunas ?></h6>
 
                 </div>
               </div>
             </div>
 
           </div>
-        </div><!-- End Revenue Card -->
+        </div>
 
-        <!-- Revenue Card -->
         <div class="col-xxl-4 col-md-4">
           <div class="card info-card tagihan-paid-card">
 
             <div class="card-body">
-              <h5 class="card-title">Tagihan Sudah Dibayar</h5>
+              <h5 class="card-title">Tagihan Sudah Lunas</h5>
 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i class="bi bi-file-earmark-check"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>10</h6>
+                  <h6><?= $tagihan_lunas ?></h6>
                 </div>
               </div>
             </div>
 
           </div>
-        </div><!-- End Revenue Card -->
+        </div>
 
-        <!-- Customers Card -->
         <div class="col-xxl-4 col-xl-6">
 
           <div class="card info-card pemasukan-card">
@@ -94,9 +91,8 @@
             </div>
           </div>
 
-        </div><!-- End Customers Card -->
+        </div>
 
-        <!-- Customers Card -->
         <div class="col-xxl-4 col-xl-6">
 
           <div class="card info-card pengeluaran-card">

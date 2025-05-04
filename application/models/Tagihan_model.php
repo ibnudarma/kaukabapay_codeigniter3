@@ -4,12 +4,23 @@ class Tagihan_model extends CI_Model {
 
     public function countTagihan($filter = null, $jenis_filter = null)
     {
-        // Jika filter dan jenis_filter diberikan
         if ($filter && $jenis_filter) {
             $this->db->like($jenis_filter, $filter);
         }
         $this->db->from('tagihan t');
         $this->db->join('siswa s', 's.nis = t.nis');
+        return $this->db->count_all_results();
+    }
+
+    public function tagihanBelumLunas(){
+        $this->db->from('tagihan');
+        $this->db->where('status', 'belum lunas');
+        return $this->db->count_all_results();
+    }
+
+    public function tagihanLunas(){
+        $this->db->from('tagihan');
+        $this->db->where('status', 'lunas');
         return $this->db->count_all_results();
     }
 
