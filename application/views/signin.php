@@ -72,10 +72,10 @@
                     </div>
 
                     <div class="col-12">
-                      <p class="small mb-0">Lupa Password? <a href="pages-register.html">Klik Disini</a></p>
+                    <a href="<?= base_url('app/lupa_password')?>"><p class="small mb-0">Lupa Password </p></a>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 pb-3">
                       <button class="btn btn-success w-100" type="submit">Sign In</button>
                     </div>
                   </form>
