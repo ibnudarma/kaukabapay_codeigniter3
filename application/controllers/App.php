@@ -6,6 +6,7 @@ class App extends CI_Controller
     public function __construct() {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('Tagihan_model');
         $this->load->model('Pegawai_model');
         $this->load->model('Siswa_model');
         $this->load->library(['session', 'form_validation']);
@@ -78,6 +79,9 @@ class App extends CI_Controller
         auth_check();
         // var_dump($data);
         $data['content'] = "dashboard";
+        $data['jumlah_siswa'] = $this->Siswa_model->countSiswa();
+        $data['tagihan_belum_lunas'] = $this->Tagihan_model->tagihanBelumLunas();
+        $data['tagihan_lunas'] = $this->Tagihan_model->tagihanLunas();
         $this->load->view('template', $data);
     }
 }

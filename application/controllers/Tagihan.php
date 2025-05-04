@@ -18,11 +18,17 @@ class Tagihan extends CI_Controller {
 
         $filter = $this->input->get('filter', true);
         $jenis_filter = $this->input->get('jenis_filter', true);
-
-        $config['base_url'] = base_url('tagihan/index');
-        $config['total_rows'] = $this->Tagihan_model->countTagihan();
+        
+        if ($filter && $jenis_filter) {
+            $config['base_url'] = base_url('tagihan/index?filter=' . urlencode($filter) . '&jenis_filter=' . urlencode($jenis_filter));
+            $config['total_rows'] = $this->Tagihan_model->countTagihan($filter, $jenis_filter);
+        } else {
+            $config['base_url'] = base_url('tagihan/index');
+            $config['total_rows'] = $this->Tagihan_model->countTagihan();
+        }
+        
         $config['per_page'] = 8;
-
+        
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close'] = '</ul></nav>';
         $config['attributes'] = ['class' => 'page-link'];
@@ -38,14 +44,17 @@ class Tagihan extends CI_Controller {
         $config['cur_tag_close'] = '</span></li>';
         $config['num_tag_open'] = '<li class="page-item">';
         $config['num_tag_close'] = '</li>';
-
+        
         $this->pagination->initialize($config);
+        
+        // Mengambil data tagihan dengan filter jika ada, atau seluruh data jika tidak ada filter
         $start = intval($this->uri->segment(3, 0));
         $tagihan = $this->Tagihan_model->getTagihan($filter, $jenis_filter, $config['per_page'], $start);
-
+        
         $data['tagihan'] = $tagihan;
         $data['content'] = "tagihan";
         $this->load->view('template', $data);
+        
     }
 
     public function tambah()
