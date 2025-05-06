@@ -95,4 +95,9 @@ class Tagihan extends CI_Controller {
         $this->load->view('template', $data);
     }
 
+    public function bayar()
+    {
+        
+    }
+
 }
