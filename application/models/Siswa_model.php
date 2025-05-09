@@ -13,5 +13,9 @@ class Siswa_model extends CI_Model {
         $this->db->from('siswa'); 
         return $this->db->count_all_results();
     }
+
+    public function get_siswa_by_user_id($user_id) {
+        return $this->db->get_where('siswa', ['user_id' => $user_id])->row();
+    }
 }
 

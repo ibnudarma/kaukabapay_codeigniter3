@@ -23,7 +23,7 @@ if (!function_exists('authorize_request')) {
             if (!in_array($decoded->role, $allowed_roles)) {
                 $CI->response([
                     'status' => false,
-                    'message' => 'Akses ditolak, role tidak sesuai'
+                    'message' => 'Akses ditolak'
                 ], \chriskacerguis\RestServer\RestController::HTTP_FORBIDDEN);
                 exit;
             }
