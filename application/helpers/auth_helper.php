@@ -11,4 +11,5 @@ if (!function_exists('auth_check')) {
             redirect('app/signin');
         }
     }
+    
 }

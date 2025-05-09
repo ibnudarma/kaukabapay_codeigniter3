@@ -14,15 +14,6 @@ class App extends CI_Controller
         $this->load->helper('auth');
     }
 
-    public function test_db() {
-        $this->load->database();
-        if ($this->db->conn_id) {
-            echo "Koneksi berhasil!";
-        } else {
-            echo "Koneksi gagal!";
-        }
-    }
-
     public function signin()
     {
         if ($this->session->userdata('sign_in') == TRUE) {
