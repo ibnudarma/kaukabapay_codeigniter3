@@ -54,6 +54,14 @@ class Siswa_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_tagihan_siswa($nis)
+    {
+        return $this->db->select('*')
+            ->from('tagihan')
+            ->where('nis', $nis)
+            ->get()->result_array();
+    }
+
     public function insert($siswa_data, $account_data)
     {
         $this->db->trans_begin();
