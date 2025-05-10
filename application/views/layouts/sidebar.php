@@ -25,9 +25,9 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link <?= current_url() == base_url('account') ? '' : 'collapsed' ?>" href="<?= base_url('account') ?>">
+    <a class="nav-link <?= current_url() == base_url('siswa') ? '' : 'collapsed' ?>" href="<?= base_url('siswa') ?>">
     <i class="bi bi-people-fill"></i>
-      <span>Kelola Akun</span>
+      <span>Kelola Siswa</span>
     </a>
   </li>
   <?php endif ?>
