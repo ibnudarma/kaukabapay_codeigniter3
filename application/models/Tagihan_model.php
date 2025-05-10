@@ -41,6 +41,17 @@ class Tagihan_model extends CI_Model {
         return $query->result();
     }
 
+    private function generate_id_tagihan()
+    {
+        $prefix = 'TG';
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomPart = '';
+        for ($i = 0; $i < 8; $i++) {
+            $randomPart .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+        return $prefix . $randomPart;
+    }
+
     public function tambah($jenis_tagihan, $jumlah_tagihan)
     {
         $query = "INSERT INTO tagihan (nis, jenis_tagihan, jumlah)
@@ -57,6 +68,7 @@ class Tagihan_model extends CI_Model {
         $this->db->select('t.*, s.nama');
         $this->db->from('tagihan t');
         $this->db->join('siswa s', 's.nis = t.nis');
+        $this->db->where('t.id_tagihan', $id_tagihan);
         $result = $this->db->get();
         return $result->row();
     }

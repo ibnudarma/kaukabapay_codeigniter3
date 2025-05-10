@@ -92,12 +92,13 @@ class Tagihan extends CI_Controller {
         
         $data["tagihan"] = $tagihan;
         $data["content"] = "tagihan_detail";
+
         $this->load->view('template', $data);
     }
 
     public function bayar()
     {
-        
+        var_dump($this->input->post('dibayar'));
     }
 
 }
