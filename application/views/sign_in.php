@@ -48,12 +48,12 @@
                     <div class="alert alert-danger"><?= $this->session->flashdata('error') ?></div>
                   <?php endif; ?>
 
-                  <form action="<?= base_url('app/authenticate') ?>" method="post" class="row g-3">
+                  <form action="<?= base_url('app/sign_in') ?>" method="post" class="row g-3">
 
                     <div class="col-12">
                     <div class="form-floating mb-3">
-                    <input type="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" id="floatingEmail" name="email" placeholder="name@example.com">
-                    <label for="floatingEmail">Email</label>
+                    <input type="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" id="email" name="email" value="<?= set_value('email') ?>" placeholder="name@example.com">
+                    <label for="email">Email</label>
                     <div class="invalid-feedback">
                         <?= form_error('email') ?>
                     </div>

@@ -9,7 +9,7 @@
     </a>
   </li>
 
-  <?php if ($this->session->userdata('user')->role == 'bendahara') :?>
+  <?php if ($this->session->userdata('role') == 'bendahara') :?>
   <li class="nav-item">
     <a class="nav-link <?= current_url() == base_url('tagihan/tambah') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/tambah') ?>">
     <i class="bi bi-file-earmark-plus"></i>

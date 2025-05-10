@@ -8,7 +8,7 @@ if (!function_exists('auth_check')) {
         // Memeriksa apakah user sudah login
         if (!$CI->session->userdata('sign_in')) {
             // Jika belum login, arahkan ke halaman login
-            redirect('app/signin');
+            redirect('app/sign_in');
         }
     }
     

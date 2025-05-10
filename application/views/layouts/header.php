@@ -18,8 +18,8 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6><?= $this->session->userdata('user')->email ?></h6>
-              <span><?= $this->session->userdata('user')->role ?></span>
+              <h6><?= $this->session->userdata('email') ?></h6>
+              <span><?= $this->session->userdata('role') ?></span>
             </li>
             <li>
               <hr class="dropdown-divider">
