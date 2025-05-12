@@ -61,9 +61,17 @@ class Bayar extends RestController {
             'dibayar' => $tagihan->jumlah,
         ]);
 
+        // Tambahkan ke tabel pembayaran
+        $this->db->insert('pembayaran', [
+            'tagihan_id' => $id_tagihan,
+            'jumlah_bayar' => $tagihan->jumlah,
+            'metode_pembayaran' => 'kaukabapay'
+        ]);
+
         return $this->response([
             'status' => true,
             'message' => 'Pembayaran berhasil.'
         ], RestController::HTTP_OK);
     }
+
 }
