@@ -44,4 +44,16 @@ class Auth extends RestController {
         }
     }
 
+    public function cek_token_get() 
+    {
+        // Hanya untuk memastikan token masih valid
+        $decoded = authorize_request($this, ['bendahara', 'siswa', 'kepala sekolah']); // Role disesuaikan
+        // Jika sampai sini, berarti token valid
+        $this->response([
+            'status' => true,
+            'message' => 'Token valid',
+            'data' => $decoded
+        ], self::HTTP_OK);
+    }
+
 }

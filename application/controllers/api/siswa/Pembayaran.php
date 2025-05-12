@@ -41,7 +41,7 @@ class Pembayaran extends RestController {
             if ($pembayaran) {
                 return $this->response([
                     'status' => true,
-                    'message' => 'Tagihan siswa ditemukan',
+                    'message' => 'Pembayaran siswa ditemukan',
                     'data' => $pembayaran
                 ], RESTController::HTTP_OK);
             } else {

@@ -7,9 +7,6 @@ class Tagihan extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Tagihan_model');
-        $this->load->library(['session', 'form_validation','pagination']);
-        $this->load->helper('url');
-        $this->load->helper('auth');
         auth_check();
     }
 

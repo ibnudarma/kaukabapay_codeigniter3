@@ -8,9 +8,7 @@ class Pembayaran_model extends CI_Model {
             pembayaran.tanggal_pembayaran,
             pembayaran.jumlah_bayar,
             pembayaran.metode_pembayaran,
-            tagihan.nis,
             tagihan.jenis_tagihan,
-            tagihan.jumlah,
             tagihan.status
         ');
         $this->db->from('pembayaran');

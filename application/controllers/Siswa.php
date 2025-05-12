@@ -8,7 +8,7 @@ class Siswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Siswa_model');
-        $this->load->library('form_validation');
+        auth_check();
     }
 
     public function index()

@@ -120,6 +120,6 @@ class Pembayaran extends CI_Controller {
 
         // Bersihkan buffer dan kirim PDF
         ob_end_clean(); // WAJIB sebelum stream()
-        $dompdf->stream("bukti_pembayaran.pdf", array("Attachment" => 0));
+        $dompdf->stream($pembayaran->id_pembayaran.".pdf", array("Attachment" => 0));
     }
 }
