@@ -7,6 +7,7 @@ class App extends CI_Controller
         parent::__construct();
 
         $this->load->model('Tagihan_model');
+        $this->load->model('Pengeluaran_model');
         $this->load->model('Pegawai_model');
         $this->load->model('Siswa_model');
 
@@ -82,6 +83,12 @@ class App extends CI_Controller
             $data['jumlah_siswa'] = $this->Siswa_model->countSiswa();
             $data['tagihan_belum_lunas'] = $this->Tagihan_model->tagihanBelumLunas();
             $data['tagihan_lunas'] = $this->Tagihan_model->tagihanLunas();
+            $jumlah_dibayar = "IDR " . number_format($this->Tagihan_model->total_tagihan_dibayar(), 0, ',', '.');
+            $data['jumlah_dibayar'] = $jumlah_dibayar;
+            $jumlah_pengeluaran = "IDR " . number_format($this->Pengeluaran_model->get_total_pengeluaran(), 0, ',', '.');
+            $data['jumlah_pengeluaran'] = $jumlah_pengeluaran;
+            $jumlah_kas = $this->Tagihan_model->total_tagihan_dibayar() - $this->Pengeluaran_model->get_total_pengeluaran();
+            $data['jumlah_kas'] = "IDR " . number_format($jumlah_kas, 0, ',', '.');
 
             $data['content'] = "dashboard";
             $this->load->view('template', $data);

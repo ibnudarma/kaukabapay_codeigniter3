@@ -71,6 +71,28 @@
           </div>
         </div>
 
+        <div class="col-xxl-4 col-xl-12">
+
+          <div class="card info-card pemasukan-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Saldo Kas</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-wallet2"></i>
+                </div>
+                <div class="ps-3">
+                  <h6><?= $jumlah_kas ?></h6>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
         <div class="col-xxl-4 col-xl-6">
 
           <div class="card info-card pemasukan-card">
@@ -83,7 +105,7 @@
                 <i class="bi bi-wallet2"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>IDR 12.440.000</h6>
+                  <h6><?= $jumlah_dibayar ?></h6>
 
                 </div>
               </div>
@@ -105,7 +127,7 @@
                 <i class="bi bi-wallet2"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>IDR 6.340.000</h6>
+                  <h6><?= $jumlah_pengeluaran ?></h6>
 
                 </div>
               </div>

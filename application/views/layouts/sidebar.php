@@ -11,6 +11,13 @@
 
   <?php if ($this->session->userdata('role') == 'bendahara') :?>
   <li class="nav-item">
+    <a class="nav-link <?= current_url() == base_url('pengeluaran') ? '' : 'collapsed' ?>" href="<?= base_url('pengeluaran') ?>">
+    <i class="bi bi-file-earmark-plus"></i>
+      <span>Tambah Pengeluaran</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
     <a class="nav-link <?= current_url() == base_url('tagihan/tambah') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/tambah') ?>">
     <i class="bi bi-file-earmark-plus"></i>
       <span>Tambah Tagihan</span>
