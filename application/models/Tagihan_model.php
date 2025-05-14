@@ -26,9 +26,11 @@ class Tagihan_model extends CI_Model {
 
     public function total_tagihan_dibayar()
     {
-            $this->db->select_sum('dibayar');
-            $query = $this->db->get('tagihan');
-            return $query->row()->dibayar;
+        $this->db->select_sum('dibayar');
+        $query = $this->db->get('tagihan');
+        $result = $query->row();
+
+        return $result->dibayar ?? 0; // kembalikan 0 jika null
     }
 
     public function getTagihan($filter = null, $jenis_filter = null, $limit = 10, $start = 0)

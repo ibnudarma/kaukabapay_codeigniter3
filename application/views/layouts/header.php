@@ -1,7 +1,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="<?= base_url() ?>" class="logo d-flex align-items-center">
         <img src="<?= base_url() ?>assets/img/kaukabapay.png" alt="">
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -25,8 +25,8 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="<?= base_url('app/profile') ?>">
+            <!-- <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -36,11 +36,11 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="<?= base_url('/app/signout') ?>">
+              <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </li>

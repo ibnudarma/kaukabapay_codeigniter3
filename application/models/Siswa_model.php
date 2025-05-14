@@ -94,5 +94,22 @@ class Siswa_model extends CI_Model {
         return true;
     }
 
+    public function update($nis, $siswa_data, $user_data)
+    {
+        $this->db->trans_start();
+
+        // Update siswa
+        $this->db->where('nis', $nis)->update('siswa', $siswa_data);
+
+        // Update user
+        $user = $this->db->get_where('siswa', ['nis' => $nis])->row();
+        if ($user) {
+            $this->db->where('id_user', $user->user_id)->update('users', $user_data);
+        }
+
+        $this->db->trans_complete();
+        return $this->db->trans_status();
+    }
+
 }
 

@@ -40,8 +40,10 @@ class Pengeluaran_model extends CI_Model {
     public function get_total_pengeluaran()
     {
         $this->db->select_sum('jumlah');
-        $query = $this->db->get($this->table);
-        return $query->row()->jumlah;
+        $query = $this->db->get('pengeluaran');
+        $result = $query->row();
+
+        return $result->jumlah ?? 0;
     }
 
     /**

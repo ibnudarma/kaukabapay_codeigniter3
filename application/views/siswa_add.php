@@ -1,15 +1,7 @@
-<div class="pagetitle">
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active">Tambah Siswa</li>
-    </ol>
-  </nav>
-</div><!-- End Page Title -->
-
 <section class="section">
   <div class="row">
     <div class="col-lg-12 card">
-        <div class="card-title">
+        <div class="card-title mt-3 mx-3">
             <a href="<?= base_url('siswa') ?>" class="btn btn-danger">Batal</a>
         </div>
       <div class="card-body px-3">

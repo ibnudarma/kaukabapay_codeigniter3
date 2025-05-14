@@ -90,6 +90,7 @@ class App extends CI_Controller
             $jumlah_kas = $this->Tagihan_model->total_tagihan_dibayar() - $this->Pengeluaran_model->get_total_pengeluaran();
             $data['jumlah_kas'] = "IDR " . number_format($jumlah_kas, 0, ',', '.');
 
+            $data['title'] = 'Dashboard';
             $data['content'] = "dashboard";
             $this->load->view('template', $data);
         
@@ -99,6 +100,7 @@ class App extends CI_Controller
             $data['tagihan_belum_lunas'] = $this->Tagihan_model->tagihanBelumLunas();
             $data['tagihan_lunas'] = $this->Tagihan_model->tagihanLunas();
 
+            $data['title'] = 'Dashboard';
             $data['content'] = "dashboard_siswa";
             $this->load->view('template', $data);
         }
@@ -111,10 +113,12 @@ class App extends CI_Controller
         
         if ($this->session->userdata('user')->role == 'bendahara' || $this->session->userdata('user')->role == 'kepala sekolah' ){
             $data["user"] = $this->Pegawai_model->authPegawai($this->session->userdata('user')->id_user);
+            $data['title'] = 'Profile';
             $data['content'] = "profile";
             $this->load->view('template', $data);
         } elseif ($this->session->userdata('user')->role == 'siswa') {
             $data["user"] = $this->Siswa_model->authSiswa($this->session->userdata('user')->id_user);
+            $data['title'] = 'Profile';
             $data['content'] = "profile_siswa";
             $this->load->view('template', $data);
         }else {

@@ -49,6 +49,7 @@ class Tagihan extends CI_Controller {
         $tagihan = $this->Tagihan_model->getTagihan($filter, $jenis_filter, $config['per_page'], $start);
         
         $data['tagihan'] = $tagihan;
+        $data['title'] = 'Tagihan';
         $data['content'] = "tagihan";
         $this->load->view('template', $data);
         
@@ -56,6 +57,7 @@ class Tagihan extends CI_Controller {
 
     public function tambah()
     {
+        $data['title'] = 'Tagihan';
         $data['content'] = "tagihan_tambah";
         $this->load->view('template', $data);
     }
@@ -88,6 +90,7 @@ class Tagihan extends CI_Controller {
         $tagihan = $this->Tagihan_model->detailTagihan($id_tagihan);
         
         $data["tagihan"] = $tagihan;
+        $data['title'] = 'Tagihan Detail';
         $data["content"] = "tagihan_detail";
 
         $this->load->view('template', $data);
