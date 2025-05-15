@@ -31,4 +31,37 @@ class Pembayaran_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function proses_pembayaran_berhasil($external_id, $data) {
+        // Cari tagihan berdasarkan external_id
+        $tagihan = $this->db->get_where('tagihan', ['id_tagihan' => $external_id])->row();
+
+        if (!$tagihan) {
+            return false; // Tagihan tidak ditemukan
+        }
+
+        $jumlah_bayar = $data['paid_amount'] ?? $data['amount'];
+        $new_dibayar = $tagihan->dibayar + $jumlah_bayar;
+
+        // Transaksi database
+        $this->db->trans_start();
+
+        // Update tagihan
+        $this->db->where('id_tagihan', $tagihan->id_tagihan);
+        $this->db->update('tagihan', [
+            'dibayar' => $new_dibayar,
+        ]);
+
+        // Insert data pembayaran baru
+        $pembayaran_data = [
+            'tagihan_id' => $tagihan->id_tagihan,
+            'jumlah_bayar' => $jumlah_bayar,
+            'metode_pembayaran' => $data['payment_method'] ?? null,
+        ];
+        $this->db->insert('pembayaran', $pembayaran_data);
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
 }

@@ -71,7 +71,7 @@ class App extends CI_Controller
     {
         $this->session->sess_destroy();
 
-        redirect('app/signin');
+        redirect('app/sign_in');
     }
 
     public function dashboard()
@@ -96,7 +96,7 @@ class App extends CI_Controller
         
         } elseif ($this->session->userdata('role') == 'siswa') {
 
-            $data['jumlah_tagihan'] = $this->Tagihan_model->countTagihan($this->session->userdata('siswa')->user_id, 'user_id');
+            $data['jumlah_tagihan'] = $this->Tagihan_model->countTagihan($this->session->userdata('user_id'), 'user_id');
             $data['tagihan_belum_lunas'] = $this->Tagihan_model->tagihanBelumLunas();
             $data['tagihan_lunas'] = $this->Tagihan_model->tagihanLunas();
 

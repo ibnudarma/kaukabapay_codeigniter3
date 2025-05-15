@@ -82,4 +82,23 @@ class Tagihan_model extends CI_Model {
         return $result->row();
     }
 
+    public function get_my_tagihan($user_id)
+    {
+        // Ambil NIS berdasarkan user_id
+        $siswa = $this->db->select('nis')->from('siswa')->where('user_id', $user_id)->get()->row();
+
+        // Jika siswa tidak ditemukan, return array kosong
+        if (!$siswa) {
+            return [];
+        }
+
+        // Ambil tagihan berdasarkan NIS siswa
+        return $this->db->select('*')
+            ->from('tagihan')
+            ->where('nis', $siswa->nis)
+            ->order_by('created_at', 'DESC')
+            ->get()
+            ->result();
+    }
+
 }

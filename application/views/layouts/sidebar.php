@@ -38,6 +38,14 @@
     </a>
   </li>
   <?php endif ?>
+  <?php if ($this->session->userdata('role') == 'siswa') :?>
+  <li class="nav-item">
+    <a class="nav-link <?= current_url() == base_url('tagihan/siswa') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/siswa') ?>">
+    <i class="bi bi-receipt"></i>
+      <span>Tagihan Saya</span>
+    </a>
+  </li>
+  <?php endif ?>
   <li class="nav-heading">More menu</li>
 
   <li class="nav-item">

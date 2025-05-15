@@ -18,6 +18,17 @@ class User_model extends CI_Model {
             $this->db->insert('users', $user_data);
         }
 
+        $kepalasekolah = $this->db->get_where('users', ['role' => 'kepala sekolah'])->row();
+
+        if (!$kepalasekolah) {
+            $user_data = [
+                'email' => 'kepalasekolah@example.com',
+                'password' => password_hash('rahasia123', PASSWORD_DEFAULT),
+                'role' => 'kepala sekolah'
+            ];
+            $this->db->insert('users', $user_data);
+        }
+
 
     }
 

@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use GuzzleHttp\Client;
+
 class Tagihan extends CI_Controller {
 
     public function __construct()
@@ -96,9 +98,56 @@ class Tagihan extends CI_Controller {
         $this->load->view('template', $data);
     }
 
-    public function bayar()
+ 
+    public function siswa()
     {
-        var_dump($this->input->post('dibayar'));
+        $tagihan = $this->Tagihan_model->get_my_tagihan($this->session->userdata('user_id'));
+        
+        $data["tagihan"] = $tagihan;
+        $data['title'] = 'Tagihan Saya';
+        $data["content"] = "tagihan_siswa";
+        
+        $this->load->view('template', $data); 
+    }
+
+    public function bayar($id_tagihan)
+    {
+        $tagihan = $this->Tagihan_model->detailTagihan($id_tagihan);
+
+        $apiKey = ''; 
+        $payload = [
+            'external_id' => $tagihan->id_tagihan,
+            'amount' => $tagihan->jumlah,
+            'description' => $tagihan->jenis_tagihan,
+            'invoice_duration' => 86400,
+            'currency' => 'IDR'
+        ];
+
+        $client = new Client();
+
+        try {
+            $response = $client->request('POST', 'https://api.xendit.co/v2/invoices', [
+                'auth' => [$apiKey, ''], // Basic Auth
+                'json' => $payload,
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ]
+            ]);
+
+            $body = $response->getBody();
+            $result = json_decode($body, true);
+            header('location: '.$result['invoice_url']);
+            exit;
+
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            // Tangani error
+            echo 'Request failed: ' . $e->getMessage();
+            if ($e->hasResponse()) {
+                echo '<pre>';
+                print_r(json_decode($e->getResponse()->getBody(), true));
+                echo '</pre>';
+            }
+        }
     }
 
 }

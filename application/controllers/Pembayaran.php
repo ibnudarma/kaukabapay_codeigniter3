@@ -8,6 +8,8 @@ class Pembayaran extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('Tagihan_model');
+        $this->load->model('Pembayaran_model');
     }
 
     public function index()
@@ -15,7 +17,49 @@ class Pembayaran extends CI_Controller {
         // Bisa untuk list pembayaran
     }
 
-     public function cetak($id_pembayaran)
+    public function webhook()
+    {
+          $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+
+        // Logging payload ke file log CodeIgniter
+        log_message('debug', 'Xendit webhook payload: ' . $json);
+
+        if (!$data) {
+            http_response_code(400);
+            echo json_encode(['message' => 'Invalid payload']);
+            return;
+        }
+
+        // Pastikan data ada dan status valid
+        if (isset($data['status']) && isset($data['external_id'])) {
+            // http_response_code(200);
+            // echo json_encode($data);
+            // exit;
+            $status = strtoupper($data['status']);
+            $external_id = $data['external_id'];
+
+            if ($status == 'PAID' || $status == 'SUCCESS') {
+                // Update data pembayaran di database
+                $update = $this->Pembayaran_model->proses_pembayaran_berhasil($external_id, $data);
+
+                if ($update) {
+                    http_response_code(200);
+                    echo json_encode(['message' => 'Webhook berhasil diterima']);
+                    return;
+                } else {
+                    http_response_code(500);
+                    echo json_encode(['message' => 'Gagal update database']);
+                    return;
+                }
+            }
+        }
+
+        http_response_code(400);
+        echo json_encode(['message' => 'Status pembayaran tidak valid atau data kurang lengkap']);
+    }
+
+    public function cetak($id_pembayaran)
     {
         // Mulai output buffering untuk mencegah headers already sent
         ob_start();
