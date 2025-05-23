@@ -63,7 +63,7 @@
   <li class="nav-heading">More menu</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="<?= base_url('#') ?>">
+    <a class="nav-link collapsed" href="javascript:void(0);" onclick="showHelpAlert()">
       <i class="bi bi-question-circle"></i>
       <span>Bantuan</span>
     </a>
@@ -77,5 +77,18 @@
   </li>
 
 </ul>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function showHelpAlert() {
+  Swal.fire({
+    title: 'Bantuan',
+    text: 'Silakan hubungi admin jika Anda memerlukan bantuan lebih lanjut.',
+    icon: 'info',
+    confirmButtonText: 'Mengerti'
+  });
+}
+</script>
+
 
 </aside><!-- End Sidebar-->

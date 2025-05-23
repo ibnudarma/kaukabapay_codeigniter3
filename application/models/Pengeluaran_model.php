@@ -17,21 +17,23 @@ class Pengeluaran_model extends CI_Model {
         return 'EXP' . $unique;
     }
 
-    /**
-     * Tambahkan data pengeluaran ke database
-     * @param array $data ['tanggal_pengeluaran', 'jumlah', 'deskripsi']
-     * @return bool
-     */
+    public function get_all($start_date = null, $end_date = null)
+    {
+        $this->db->select('*')->from('pengeluaran');
+
+        if (!empty($start_date) && !empty($end_date)) {
+            $this->db->where('tanggal_pengeluaran >=', $start_date . ' 00:00:00');
+            $this->db->where('tanggal_pengeluaran <=', $end_date . ' 23:59:59');
+        }
+
+        return $this->db->order_by('tanggal_pengeluaran', 'DESC')->get()->result_array();
+    }
+
     public function pengeluaran_add($data)
     {
         $data['id_pengeluaran'] = $this->generate_id_pengeluaran();
 
         return $this->db->insert($this->table, $data);
-    }
-
-    public function get_all()
-    {
-       return $this->db->select('*')->from('pengeluaran')->get()->result_array();
     }
 
     /**
@@ -55,5 +57,23 @@ class Pengeluaran_model extends CI_Model {
         $this->db->where('tanggal_pengeluaran <=', $end_date);
         return $this->db->get($this->table)->result();
     }
+
+    public function get_by_id($id)
+    {
+        return $this->db->get_where($this->table, ['id_pengeluaran' => $id])->row_array();
+    }
+
+    public function update($id, $data)
+    {
+        $this->db->where('id_pengeluaran', $id);
+        return $this->db->update($this->table, $data);
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('id_pengeluaran', $id);
+        return $this->db->delete($this->table);
+    }
+
 
 }
