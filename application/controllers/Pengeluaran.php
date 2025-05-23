@@ -45,4 +45,14 @@ class Pengeluaran extends CI_Controller {
         redirect('pengeluaran');
     }
 
+    public function laporan()
+    {
+        $laporan = "";
+        $data["tagihan"] = $laporan;
+        $data['title'] = 'Tagihan Siswa';
+        $data["content"] = "pengeluaran_laporan";
+        
+        $this->load->view('template', $data); 
+    }
+
 }

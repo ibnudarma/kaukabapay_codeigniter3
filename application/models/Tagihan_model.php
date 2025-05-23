@@ -24,6 +24,53 @@ class Tagihan_model extends CI_Model {
         return $this->db->count_all_results();
     }
 
+    public function myTotalTagihan($user_id)
+    {
+        // Ambil NIS berdasarkan user_id
+        $siswa = $this->db->select('nis')->from('siswa')->where('user_id', $user_id)->get()->row();
+
+        // Jika siswa tidak ditemukan, return 0
+        if (!$siswa) {
+            return 0;
+        }
+
+        // Hitung semua tagihan berdasarkan NIS siswa
+        return $this->db->from('tagihan')
+            ->where('nis', $siswa->nis)
+            ->count_all_results();
+    }
+
+    public function myTagihanBelumLunas($user_id)
+    {
+    // Ambil NIS berdasarkan user_id
+    $siswa = $this->db->select('nis')->from('siswa')->where('user_id', $user_id)->get()->row();
+
+    // Jika siswa tidak ditemukan, return array kosong
+    if (!$siswa) {
+        return [];
+    }
+        return $this->db->from('tagihan')
+            ->where('status', 'belum lunas')
+            ->where('nis', $siswa->nis)
+            ->count_all_results();
+    }
+
+    public function myTagihanLunas($user_id)
+    {
+    // Ambil NIS berdasarkan user_id
+    $siswa = $this->db->select('nis')->from('siswa')->where('user_id', $user_id)->get()->row();
+
+    // Jika siswa tidak ditemukan, return array kosong
+    if (!$siswa) {
+        return [];
+    }
+        return $this->db->from('tagihan')
+            ->where('status', 'lunas')
+            ->where('nis', $siswa->nis)
+            ->count_all_results();
+    }
+
+
     public function total_tagihan_dibayar()
     {
         $this->db->select_sum('dibayar');
@@ -48,6 +95,11 @@ class Tagihan_model extends CI_Model {
         
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function get_all_tagihan()
+    {
+        return $this->db->select('*')->from('tagihan')->get()->result_array();
     }
 
     private function generate_id_tagihan()
@@ -82,7 +134,7 @@ class Tagihan_model extends CI_Model {
         return $result->row();
     }
 
-    public function get_my_tagihan($user_id)
+  public function get_my_tagihan($user_id)
     {
         // Ambil NIS berdasarkan user_id
         $siswa = $this->db->select('nis')->from('siswa')->where('user_id', $user_id)->get()->row();
@@ -92,13 +144,21 @@ class Tagihan_model extends CI_Model {
             return [];
         }
 
-        // Ambil tagihan berdasarkan NIS siswa
-        return $this->db->select('*')
+        // Ambil tagihan berdasarkan NIS siswa, join dengan tabel pembayaran
+        return $this->db->select('
+                tagihan.*,
+                pembayaran.id_pembayaran,
+                pembayaran.tanggal_pembayaran,
+                pembayaran.jumlah_bayar,
+                pembayaran.metode_pembayaran
+            ')
             ->from('tagihan')
-            ->where('nis', $siswa->nis)
-            ->order_by('created_at', 'DESC')
+            ->where('tagihan.nis', $siswa->nis)
+            ->join('pembayaran', 'pembayaran.tagihan_id = tagihan.id_tagihan', 'left')
+            ->order_by('tagihan.created_at', 'DESC')
             ->get()
             ->result();
     }
+
 
 }

@@ -42,6 +42,10 @@
             <tr>
               <td class="text-end" colspan="3"><a href="<?= base_url('tagihan/bayar/').$row->id_tagihan ?>" target="_blank" class="btn btn-success">Bayar Tagihan</a></td>
             </tr>
+            <?php else :?>
+            <tr>
+              <td class="text-end" colspan="3"><a href="<?= base_url('pembayaran/cetak/').$row->id_pembayaran ?>" target="_blank" class="btn btn-secondary">Cetak Bukti Pembayaran</a></td>
+            </tr>
             <?php endif ?>
           </table>
         </div>

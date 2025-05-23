@@ -38,6 +38,20 @@
     </a>
   </li>
   <?php endif ?>
+  <?php if ($this->session->userdata('role') == 'kepala sekolah') :?>
+  <li class="nav-item">
+    <a class="nav-link <?= current_url() == base_url('pengeluaran/laporan') ? '' : 'collapsed' ?>" href="<?= base_url('pengeluaran/laporan') ?>">
+    <i class="bi bi-receipt"></i>
+      <span>Pengeluaran</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link <?= current_url() == base_url('tagihan/laporan') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/laporan') ?>">
+    <i class="bi bi-receipt"></i>
+      <span>Tagihan Siswa</span>
+    </a>
+  </li>
+  <?php endif ?>
   <?php if ($this->session->userdata('role') == 'siswa') :?>
   <li class="nav-item">
     <a class="nav-link <?= current_url() == base_url('tagihan/siswa') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/siswa') ?>">
@@ -49,7 +63,7 @@
   <li class="nav-heading">More menu</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="<?= base_url() ?>">
+    <a class="nav-link collapsed" href="<?= base_url('#') ?>">
       <i class="bi bi-question-circle"></i>
       <span>Bantuan</span>
     </a>

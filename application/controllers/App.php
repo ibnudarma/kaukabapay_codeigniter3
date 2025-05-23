@@ -96,9 +96,9 @@ class App extends CI_Controller
         
         } elseif ($this->session->userdata('role') == 'siswa') {
 
-            $data['jumlah_tagihan'] = $this->Tagihan_model->countTagihan($this->session->userdata('user_id'), 'user_id');
-            $data['tagihan_belum_lunas'] = $this->Tagihan_model->tagihanBelumLunas();
-            $data['tagihan_lunas'] = $this->Tagihan_model->tagihanLunas();
+            $data['jumlah_tagihan'] = $this->Tagihan_model->myTotalTagihan($this->session->userdata('user_id'));
+            $data['tagihan_belum_lunas'] = $this->Tagihan_model->myTagihanBelumLunas($this->session->userdata('user_id'));
+            $data['tagihan_lunas'] = $this->Tagihan_model->myTagihanLunas($this->session->userdata('user_id'));
 
             $data['title'] = 'Dashboard';
             $data['content'] = "dashboard_siswa";

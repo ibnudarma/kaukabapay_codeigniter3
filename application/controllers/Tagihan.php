@@ -107,14 +107,14 @@ class Tagihan extends CI_Controller {
         $data['title'] = 'Tagihan Saya';
         $data["content"] = "tagihan_siswa";
         
-        $this->load->view('template', $data); 
+        $this->load->view('template', $data);
     }
 
     public function bayar($id_tagihan)
     {
         $tagihan = $this->Tagihan_model->detailTagihan($id_tagihan);
 
-        $apiKey = ''; 
+        $apiKey = 'xnd_development';
         $payload = [
             'external_id' => $tagihan->id_tagihan,
             'amount' => $tagihan->jumlah,
@@ -148,6 +148,17 @@ class Tagihan extends CI_Controller {
                 echo '</pre>';
             }
         }
+    }
+
+    public function laporan()
+    {
+       $tagihan = $this->Tagihan_model->get_all_tagihan();
+        
+        $data["tagihan"] = $tagihan;
+        $data['title'] = 'Tagihan Siswa';
+        $data["content"] = "tagihan_siswa_kepsek";
+        
+        $this->load->view('template', $data); 
     }
 
 }
