@@ -214,5 +214,4 @@ class Pengeluaran extends CI_Controller {
         $dompdf->stream($filename, ['Attachment' => 0]);
     }
 
-
 }

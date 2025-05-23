@@ -97,6 +97,22 @@ class Tagihan_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_all($start_date = null, $end_date = null)
+    {
+        $this->db->select('t.*, s.nama');
+        $this->db->from('tagihan t');
+        $this->db->join('siswa s', 's.nis = t.nis');
+
+        if (!empty($start_date) && !empty($end_date)) {
+            $this->db->where('DATE(t.created_at) >=', $start_date);
+            $this->db->where('DATE(t.created_at) <=', $end_date);
+        }
+
+        $this->db->order_by('t.created_at', 'DESC');
+
+        return $this->db->get()->result();
+    }
+
     public function get_all_tagihan()
     {
         return $this->db->select('*')->from('tagihan')->get()->result_array();

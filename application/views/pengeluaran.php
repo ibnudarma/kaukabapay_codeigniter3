@@ -4,7 +4,9 @@
       <div class="card p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h4 class="card-title mb-0">Daftar Pengeluaran</h4>
+          <?php if ($this->session->userdata('role') == 'bendahara') :?>
           <a href="<?= base_url('pengeluaran/tambah') ?>" class="btn btn-success">+ Tambah Pengeluaran</a>
+          <?php endif ?>
         </div>
 
         <?php
@@ -12,7 +14,7 @@
         $end_date_value   = $this->input->get('end_date') ?? '';
         ?>
         <!-- Form Filter -->
-        <form class="row g-3 mb-4" method="get" action="<?= base_url('pengeluaran') ?>">
+        <form class="row g-3 mb-4" method="get" action="<?= base_url('pengeluaran/kepsek') ?>">
         <div class="col-md-3">
             <label for="start_date" class="form-label">Tanggal Awal</label>
             <input type="date" name="start_date" id="start_date" class="form-control"
@@ -39,7 +41,9 @@
                 <th>Tanggal Pengeluaran</th>
                 <th>Jumlah</th>
                 <th>Deskripsi</th>
+                <?php if ($this->session->userdata('role') == 'bendahara') :?>
                 <th>Detail</th>
+                <?php endif ?>
               </tr>
             </thead>
             <tbody>
@@ -48,9 +52,11 @@
                   <td><?= htmlspecialchars($row['tanggal_pengeluaran']) ?></td>
                   <td>Rp <?= number_format($row['jumlah'], 0, ',', '.') ?></td>
                   <td><?= htmlspecialchars($row['deskripsi']) ?></td>
+                  <?php if ($this->session->userdata('role') == 'bendahara') :?>
                   <td>
                     <a href="<?= site_url('pengeluaran/detail?id_pengeluaran=' . urlencode($row['id_pengeluaran'])) ?>" class="btn btn-sm btn-primary">Detail</a>
                   </td>
+                  <?php endif ?>
                 </tr>
               <?php endforeach; ?>
             </tbody>
@@ -61,10 +67,9 @@
     </div>
   </div>
 </section>
-<!-- jQuery harus lebih dulu -->
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- Setelah itu baru script custom -->
 <script>
   $(document).ready(function () {
     $('#btnCetak').on('click', function () {

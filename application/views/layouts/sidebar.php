@@ -40,13 +40,13 @@
   <?php endif ?>
   <?php if ($this->session->userdata('role') == 'kepala sekolah') :?>
   <li class="nav-item">
-    <a class="nav-link <?= current_url() == base_url('pengeluaran/laporan') ? '' : 'collapsed' ?>" href="<?= base_url('pengeluaran/laporan') ?>">
+    <a class="nav-link <?= current_url() == base_url('pengeluaran') ? '' : 'collapsed' ?>" href="<?= base_url('pengeluaran') ?>">
     <i class="bi bi-receipt"></i>
       <span>Pengeluaran</span>
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link <?= current_url() == base_url('tagihan/laporan') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/laporan') ?>">
+    <a class="nav-link <?= current_url() == base_url('tagihan/kepsek') ? '' : 'collapsed' ?>" href="<?= base_url('tagihan/kepsek') ?>">
     <i class="bi bi-receipt"></i>
       <span>Tagihan Siswa</span>
     </a>
