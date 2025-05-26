@@ -80,7 +80,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?= base_url('tagihan/bayar') ?>" method="post">
+        <form action="<?= base_url('pembayaran/bayar_manual') ?>" method="post">
         <div class="row mb-3">
                 <label for="id_tagihan" class="col-sm-3 col-form-label">ID Tagihan</label>
                 <div class="col-sm-9">
@@ -100,9 +100,9 @@
                 </div>
             </div>
         <div class="row mb-3">
-                <label for="dibayar" class="col-sm-3 col-form-label">Jumlah Pembayaran</label>
+                <label for="jumlah_bayar" class="col-sm-3 col-form-label">Jumlah Pembayaran</label>
                 <div class="col-sm-9">
-                    <input type="text" id="dibayar"  class="form-control" name="dibayar" placeholder="Masukan Jumlah Pembayaran ...">
+                    <input type="text" id="jumlah_bayar"  class="form-control" name="jumlah_bayar" placeholder="Masukan Jumlah Pembayaran ...">
                 </div>
             </div>
           </div>

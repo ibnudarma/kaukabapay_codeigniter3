@@ -19,7 +19,7 @@ class Pembayaran extends CI_Controller {
 
     public function webhook()
     {
-          $json = file_get_contents('php://input');
+        $json = file_get_contents('php://input');
         $data = json_decode($json, true);
 
         // Logging payload ke file log CodeIgniter
@@ -57,6 +57,23 @@ class Pembayaran extends CI_Controller {
 
         http_response_code(400);
         echo json_encode(['message' => 'Status pembayaran tidak valid atau data kurang lengkap']);
+    }
+
+    public function bayar_manual()
+    {
+        $id_tagihan  = $this->input->post('id_tagihan');
+        $jumlah_bayar  = $this->input->post('jumlah_bayar');
+    
+        if (empty($id_tagihan) || empty($jumlah_bayar)) {
+            $this->session->set_flashdata('alert', '<div class="alert alert-danger">id tagihan dan jumlah bayar wajib diisi!</div>');
+            redirect('tagihan/detail/' . $id_tagihan);
+            return;
+        }
+
+        $this->Pembayaran_model->bayar_manual($id_tagihan, $jumlah_bayar);
+
+        redirect('tagihan/detail/' . $id_tagihan);
+        return; 
     }
 
     public function cetak($id_pembayaran)
